@@ -34,6 +34,7 @@ const compiler = webpack(webpackConfig)
 
 const shopifyUrl = `https://${process.env.SHOPIFY_STORE}`
 const previewUrl = `${shopifyUrl}?preview_theme_id=${process.env.SHOPIFY_THEME_ID}`
+console.log(previewUrl,'\n')
 
 let isFirstCompilation = true
 

@@ -32,9 +32,14 @@ const app = express()
 const server = https.createServer(sslOptions, app)
 const compiler = webpack(webpackConfig)
 
+if(process.env.SHOPIFY_STORE == '' || typeof process.env.SHOPIFY_STORE === 'undefined') throw new Error('Set environment variable SHOPIFY_STORE')
+if(process.env.SHOPIFY_THEME_ID == '' || typeof process.env.SHOPIFY_THEME_ID === 'undefined') throw new Error('Set environment variable SHOPIFY_THEME_ID')
+if(process.env.SHOPIFY_PASSWORD == ''|| typeof process.env.SHOPIFY_PASSWORD === 'undefined') throw new Error('Set environment variable SHOPIFY_PASSWORD')
+
 const shopifyUrl = `https://${process.env.SHOPIFY_STORE}`
 const previewUrl = `${shopifyUrl}?preview_theme_id=${process.env.SHOPIFY_THEME_ID}`
 console.log(previewUrl,'\n')
+
 
 let isFirstCompilation = true
 
